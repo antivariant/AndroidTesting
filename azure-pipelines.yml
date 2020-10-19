@@ -19,13 +19,6 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: git://TestAndroid/
-    Contents: '**/*.apk'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
-
 - task: Bash@3
   inputs:
     targetType: 'inline'
