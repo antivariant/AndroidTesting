@@ -18,6 +18,16 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
+- task: DownloadBuildArtifacts@0
+  inputs:
+    buildType: 'specific'
+    project: '29a92997-0dde-44c8-b009-7a783da3b8dc'
+    pipeline: '6'
+    buildVersionToDownload: 'latest'
+    downloadType: 'specific'
+    itemPattern: 'sm_main-ukraine-debug.apk'
+    downloadPath: '$(System.ArtifactsDirectory)'
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
