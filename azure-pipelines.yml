@@ -41,4 +41,4 @@ steps:
       $ANDROID_HOME/platform-tools/adb devices
       
       echo "Emulator started"
-      
+      $ANDROID_HOME/platform-tools/adb shell am instrument -w antivariant.qa.androidtesting.test/androidx.test.runner.AndroidJUnitRunner
