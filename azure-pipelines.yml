@@ -41,16 +41,10 @@ steps:
       $ANDROID_HOME/platform-tools/adb devices
       
       echo "Emulator started"
-- task: CopyFiles@2
-  inputs:
-    Contents: '**/*.apk'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
-      #!/usr/bin/env bash
-      
-      $ANDROID_HOME/platform-tools/adb install $(Build.ArtifactStagingDirectory)/app-debug-androidTest.apk
-      $ANDROID_HOME/platform-tools/adb shell am instrument -w -r -e debug false -e class 'antivariant.qa.androidtesting.SmokeTest' antivariant.qa.androidtesting.test/androidx.test.runner.AndroidJUnitRunner
-            
+      ./gradlew connectedDebugAndroidTest --console=plain  --stacktrace
+      ./gradlew --stop
