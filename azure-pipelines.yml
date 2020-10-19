@@ -15,7 +15,7 @@ steps:
     workingDirectory: ''
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
-    publishJUnitResults: false
+    publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
     tasks: 'assembleDebug'
 - task: Bash@3
@@ -41,4 +41,4 @@ steps:
       $ANDROID_HOME/platform-tools/adb devices
       
       echo "Emulator started"
-      $ANDROID_HOME/platform-tools/adb shell am instrument -w antivariant.qa.androidtesting.test/androidx.test.runner.AndroidJUnitRunner
+      $ANDROID_HOME/platform-tools/adb shell am instrument -w -r -e debug false -e class 'antivariant.qa.androidtesting.SmokeTest' antivariant.qa.androidtesting.test/androidx.test.runner.AndroidJUnitRunner
