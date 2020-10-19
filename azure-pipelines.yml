@@ -45,6 +45,6 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      ./gradlew connectedDebugAndroidTest  --tests SmokeTest
+      ./gradlew connectedDebugAndroidTest  --Debug
       ./gradlew --stop
 
